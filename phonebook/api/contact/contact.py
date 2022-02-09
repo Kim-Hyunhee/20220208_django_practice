@@ -7,7 +7,11 @@ class Contact(View) :
     
     def get(self, request):
         
-        db_contact = Contacts.objects.filter(name='조경진').first()
+        # request의 기능 중 메쏘드 이름['파라미터'] 방식으로 파라미터값 추출
+        
+        search_name = request.GET['name']
+        
+        db_contact = Contacts.objects.filter(name=search_name).first()
         
         return JsonResponse ({
             'code' : 200,
@@ -18,7 +22,12 @@ class Contact(View) :
         })
         
     def post(self, request):
+        
+        
         return JsonResponse ({
             'code' : 200,
-            'message' : '연락처 - POST 테스트'
+            'message' : '연락처 - POST 테스트',
+            'data' : {
+                '임시항목 ' : request.POST['email'],
+            }
         })
