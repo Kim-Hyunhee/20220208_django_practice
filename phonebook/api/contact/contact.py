@@ -1,6 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from rest_framework.views import View
+from rest_framework.response import Response
+
 from django.views import View
 from django.http import JsonResponse
 
@@ -31,7 +34,7 @@ class Contact(APIView):
         
         
         
-        return JsonResponse({
+        return Response({
             'code': 200,
             'mesasge': '연락처-POST 테스팅',
             'data': {
