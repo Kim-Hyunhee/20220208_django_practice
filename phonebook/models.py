@@ -76,6 +76,16 @@ class Contacts(models.Model):
     email = models.CharField(max_length=50)
     memo = models.TextField()
     created_at = models.DateTimeField()
+    
+    def get_data_object(self):
+        data = {
+            'name' : self.name,
+            'phone_num' : self.phone_num,
+            'email' : self.email,
+            'memo' : self.memo,
+            'created_at' : str(self.created_at)
+        }
+        return data
 
     class Meta:
         managed = False
